@@ -1,16 +1,15 @@
-require('dotenv').config();
 var express = require('express');
-
-var  allRoutes=require('./routes');
-var {connectDb}=require('./db/dbConnection');
-
 var app = express();
-connectDb();
+require('dotenv').config();
+var {connectdb }=require('./db/dbconnector')
+var allroutes = require('./routes');
+
 app.use(express.json());
 
-app.use('/api/',allRoutes)
+connectdb();
 
+app.use('/api',allroutes);
 
 app.listen(process.env.PORT,()=>{
-   console.log(`listening on port ${process.env.PORT}`);
-});
+    console.log(`Listening on ${process.env.PORT}`);
+})

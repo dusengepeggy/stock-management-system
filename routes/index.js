@@ -1,7 +1,9 @@
-const express = require('express');
-const allRoutes = express.Router();
+module.exports = stockRoute;
+var stockRoute =require('./stock.routes');
+var express=require('express');
+var allroutes = express();
 
-const stockRoute = require('./stock.route');
-allRoutes.use('/stock', stockRoute);
+allroutes.use('/stock',stockRoute);
 
-module.exports =allRoutes;
+
+module.exports = allroutes  ;
